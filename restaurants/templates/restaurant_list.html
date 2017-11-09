@@ -6,8 +6,10 @@
 </head>
 <body>
 	{% for x in objects %}
-		{{}}
-		{{}}
+		{{x.name}}
+		{{x.description}}
+		{{x.opening_time}}
+		{{x.closing_time}}
 	{%endfor%}
 </body>
 </html>

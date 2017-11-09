@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block heading %} RESTAURANT CREATE {% endblock heading %}
+{% block content %} 
+	<form action="{% url 'restaurant_create' %}" method="POST">
+		{% csrf_token %}
+		{{x.as_p}}
+		<input class="list-group-item list-group-item-warning" type="submit" value="create">
+	</form>
+{% endblock content %} 
