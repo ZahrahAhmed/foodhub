@@ -4,7 +4,10 @@
 	<title>details</title>
 </head>
 <body>
-        {{object.name}}
+		{% if object.img %}
+			<img class="card-img-top" src="{{object.img.url}}" alt="Card image cap">
+		{% endif %}
+		{{object.name}}
 		{{object.description}}
 		{{object.opening_time}}
 		{{object.closing_time}}
