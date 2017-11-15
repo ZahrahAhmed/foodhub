@@ -6,14 +6,14 @@
 </head>
 <body>
 	{% for x in objects %}
-		{% if x.img %}
-			<img class="card-img-top" src="{{x.img.url}}" alt="Card image cap">
+		{% if x.logo %}
+			<img class="card-logo-top" src="{{x.logo.url}}" alt="Card image cap">
 		{% endif %}
 		{{x.name}}
 		{{x.description}}
 		{{x.opening_time}}
 		{{x.closing_time}}
-	{%endfor%}
+	{% endfor %}
 	<div class="pagination">
     <span class="step-links">
         {% if objects.has_previous %}

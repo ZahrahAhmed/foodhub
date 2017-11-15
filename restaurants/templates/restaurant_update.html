@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block heading %} RESTAURANT UPDATE {% endblock heading %}
 {% block content %} 
-	<form action="{% url 'restaurant_update' restaurant_id=y.id %}" method="POST">
+	<form action="{% url 'restaurant_update' restaurant_id=y.id %}" method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{x.as_p}}
 		<input class="list-group-item list-group-item-warning" type="submit" value="update">

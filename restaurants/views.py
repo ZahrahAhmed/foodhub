@@ -4,7 +4,8 @@ from .forms import RestaurantForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def restaurant_list(request):
-	paginator = Paginator(contact_list, 2)
+	objects=Restaurant.objects.all()
+	paginator = Paginator(objects, 2)
 	page = request.GET.get('page')
 	try:
 		objects = paginator.page(page)
@@ -13,7 +14,7 @@ def restaurant_list(request):
 	except EmptyPage:
 		objects = paginator.page(paginator.num_pages)
 	context = {
-	"objects": Restaurant.objects.all(),
+	"objects": objects,
 	}
 	return render(request, "restaurant_list.html", context)
 
