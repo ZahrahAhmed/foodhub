@@ -1,33 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>restaurant list </title>
-</head>
-<body>
-	{% for x in objects %}
-		{% if x.logo %}
-			<img class="card-logo-top" src="{{x.logo.url}}" alt="Card image cap">
-		{% endif %}
-		{{x.name}}
-		{{x.description}}
-		{{x.opening_time}}
-		{{x.closing_time}}
-	{% endfor %}
-	<div class="pagination">
-    <span class="step-links">
-        {% if objects.has_previous %}
-            <a href="?page={{ objects.previous_page_number }}">previous</a>
-        {% endif %}
+<form action="{% url 'restaurant_list' %}" method="GET">
+    <input type="text" name='q' placeholder="Search posts" value="{{request.GET.q}}">
+    <input type="submit" value="Search">
+</form>
 
-        <span class="current">
-            Page {{ objects.number }} of {{ objects.paginator.num_pages }}.
+    {% for restaurant in objects %}
+    <ul>
+        <li>{{restaurant.name}}</li>
+        <li>{{restaurant.description}}</li>
+        <li>{{restaurant.opening_time}}</li>
+        <li>{{restaurant.closing_time}}</li>
+        <li>{{restaurant.id}}</li>
+        {% if restaurant.logo %}
+        <li><img src="{{restaurant.logo.url}}" alt=""></li>
+        {% endif %}
+    </ul>
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if objects.has_previous %}
+                <a href="?page={{ objects.previous_page_number }}&q={{ request.GET.q }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ objects.number }} of {{ objects.paginator.num_pages }}.
+            </span>
+
+            {% if objects.has_next %}
+                <a href="?page={{ objects.next_page_number }}&q={{ request.GET.q }}">next</a>
+            {% endif %}
         </span>
-
-        {% if objects.has_next %}
-            <a href="?page={{ objects.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-	</div>
-</body>
-</html>
+    </div>

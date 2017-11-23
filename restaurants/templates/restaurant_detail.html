@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>details</title>
-</head>
-<body>
-		{% if object.img %}
-			<img class="card-logo-top" src="{{object.logo.url}}" alt="Card image cap">
-		{% endif %}
-		{{object.name}}
-		{{object.description}}
-		{{object.opening_time}}
-		{{object.closing_time}}
-</body>
-</html>
+{{status}}
+{{restaurant.name}} <br>
+{{restaurant.description}} <br>
+{{restaurant.opening_time}} <br>
+{{restaurant.closing_time}} <br>
+{% if restaurant.logo %}
+<li><img src="{{restaurant.logo.url}}" alt=""></li>
+{% endif %}
+{% for item in items %}
+    {{item}}
+{% endfor %}
