@@ -19,7 +19,7 @@ class RestaurantDetailView(RetrieveAPIView):
 	lookup_url_kwarg="slug"
 	permission_classes=[IsAuthenticated,]
 
-class RestaurantDeleteView(RetrieveAPIView):
+class RestaurantDeleteView(DestroyAPIView):
 	queryset = Restaurant.objects.all()
 	serializer_class = RestaurantListSerializer
 	lookup_field = "slug"
