@@ -1,8 +1,15 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, CreateAPIView, RetrieveUpdateAPIView
-from restaurants.models import Restaurant
-from .serializers import RestaurantListSerializer, RestaurantDetailSerializer, RestaurantCreateUpdateSerializer
+from restaurants.models import Restaurant, Item
+from .serializers import ItemDetailSerializer, RestaurantListSerializer, RestaurantDetailSerializer, RestaurantCreateUpdateSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework.filters import SearchFilter
+
+class ItemDetailAPIView(RetrieveAPIView):
+	queryset = Item.objects.all()
+	serializer_class = ItemDetailSerializer
+	lookup_field = "slug"
+	lookup_url_kwarg="slug"
+	permission_classes=[IsAuthenticated]
 
 class RestaurantListView(ListAPIView):
 	queryset = Restaurant.objects.all()
